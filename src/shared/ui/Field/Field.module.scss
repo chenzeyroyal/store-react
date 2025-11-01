@@ -1,0 +1,14 @@
+.field {
+  width: 100%;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: var(--border-radius-xl);
+
+  @include hover {
+    background-color: var(--color-grey-03);
+  }
+}

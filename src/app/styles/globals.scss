@@ -1,0 +1,99 @@
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  color: var(--color-white);
+  background-color: var(--color-black);
+
+  @include fluid-text(16, 14);
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1,
+.h1 {
+  @include fluid-text(50, 30);
+
+  font-weight: 700;
+}
+
+h2,
+.h2 {
+  @include fluid-text(28, 18);
+
+  font-weight: 700;
+}
+
+h3,
+.h3 {
+  @include fluid-text(22, 16);
+
+  font-weight: 700;
+}
+
+h4,
+.h4 {
+  @include fluid-text(18, 16);
+
+  font-weight: 600;
+}
+
+h5,
+.h5 {
+  @include fluid-text(22, 18);
+
+  font-weight: 500;
+}
+
+h6,
+.h6 {
+  @include fluid-text(20, 16);
+
+  font-weight: 600;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+button {
+  &[aria-haspopup="menu"] {
+    cursor: context-menu;
+  }
+}
+
+// svg {
+//   fill: transparent;
+// }
+
+a {
+  color: inherit;
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+li[class] {
+  list-style: none;
+}
+
+:focus-visible {
+  @include focus-visible;
+}
+
+:has(.swiper) {
+  min-width: 0;
+}

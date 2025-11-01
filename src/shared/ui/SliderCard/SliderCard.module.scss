@@ -1,0 +1,25 @@
+.card {
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  top: 50%;
+  translate: -30% -50%;
+  left: 20%;
+}
+
+.title {
+  font-size: fluid-to-laptop(50, 18);
+}
+
+.subtitle {
+  font-size: fluid-to-laptop(20, 14);
+}
+
+.button {
+  margin-top: 20px;
+}

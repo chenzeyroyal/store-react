@@ -1,0 +1,31 @@
+.button {
+  @include flex-center;
+  column-gap: 5px;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  color: inherit;
+
+  @include hover {
+    filter: brightness(0.9);
+  }
+}
+
+.accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.plate {
+  border-radius: var(--border-radius-m);
+}
+
+.transparent {
+  border-radius: var(--border-radius-m);
+  border: var(--border-width-s) solid var(--color-white);
+}
+
+.circle {
+  @include square(40px);
+  border-radius: 50%;
+}

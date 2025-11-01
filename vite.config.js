@@ -1,0 +1,39 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { fileURLToPath, URL } from "node:url";
+import svgSprite from "vite-plugin-svg-sprite";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    // Для более новых версий vite-plugin-svg-sprite
+    svgSprite({
+      symbolId: "icon-[name]",
+      svgo: {
+        plugins: [
+          {
+            name: "removeAttrs",
+            params: {
+              attrs: "fill|class",
+            },
+          },
+        ],
+      },
+    }),
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use '@/app/styles/helpers' as *;
+        `,
+      },
+    },
+  },
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
