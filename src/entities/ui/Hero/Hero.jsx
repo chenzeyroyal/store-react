@@ -1,7 +1,8 @@
 import Section from "@/widgets/Section/Section";
 import Slider from "@/widgets/Slider";
 import "./Hero.module.scss";
-import useSlider from "@/widgets/Slider/components/useSlider";
+import { useRef } from "react";
+import SliderNavigation from "@/widgets/Slider/components/SliderNavigation";
 
 const Hero = () => {
   const sliderParams = {
@@ -39,15 +40,15 @@ const Hero = () => {
     },
   ];
 
-  const { swiperInstance, onSwiperInit } = useSlider();
+  const sliderRef = useRef(null)
 
   return (
     <Section>
       <Slider
+      sliderRef={sliderRef}
         slides={slides}
         params={sliderParams}
-        swiperInstance={swiperInstance}
-        onSwiperInit={onSwiperInit}
+        navigation={true}
       />
     </Section>
   );

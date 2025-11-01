@@ -4,23 +4,18 @@ import classNames from "classnames";
 
 const SliderNavigation = (props) => {
   const {
+    sliderRef,
     placement,
     position,
-    swiperInstance,
-    showPagination = true,
     showButtons = true,
   } = props;
 
   const onButtonPrev = () => {
-    if (swiperInstance) {
-      swiperInstance.slidePrev();
-    }
+      sliderRef.current && sliderRef.current.slidePrev();
   };
 
   const onButtonNext = () => {
-    if (swiperInstance) {
-      swiperInstance.slideNext();
-    }
+     sliderRef.current && sliderRef.current.slideNext();
   };
 
   return (

@@ -17,29 +17,22 @@ const defaultParams = {
 
 const Slider = (props) => {
   const {
+    sliderRef,
     params = defaultParams,
     slides = [],
-    navigation = true,
-    swiperInstance,
-    onSwiperInit,
+    navigation = false,
   } = props;
 
   return (
     <div className={styles.slider}>
-      <Swiper modules={[Autoplay]} onSwiper={onSwiperInit} {...params}>
+      <Swiper modules={[Autoplay]} onSwiper={(swiper) => sliderRef.current = swiper} {...params}>
         {slides.map((slide, index) => (
           <SwiperSlide className={styles.slide} key={slide.id || index}>
             <SliderCard {...slide} />
           </SwiperSlide>
         ))}
+        {navigation && <SliderNavigation sliderRef={sliderRef}/>}
       </Swiper>
-      {navigation && (
-        <SliderNavigation
-          swiperInstance={swiperInstance}
-          placement="inside"
-          position="bottom"
-        />
-      )}
     </div>
   );
 };

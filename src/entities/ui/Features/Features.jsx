@@ -1,8 +1,8 @@
 import Section from "@/widgets/Section/Section";
 import Slider from "@/widgets/Slider";
-import useSlider from "@/widgets/Slider/components/useSlider";
 import "./Features.module.scss";
 import SliderNavigation from "@/widgets/Slider/components/SliderNavigation";
+import { useRef } from "react";
 
 const Features = () => {
   const sliderParams = {
@@ -40,16 +40,15 @@ const Features = () => {
     },
   ];
 
-  const { swiperInstance, onSwiperInit } = useSlider();
+  const sliderRef = useRef(null)
 
   return (
     <Section>
-      <SliderNavigation swiperInstance={swiperInstance} />
+      <SliderNavigation sliderRef={sliderRef}/>
       <Slider
+      sliderRef={sliderRef}
         slides={slides}
         params={sliderParams}
-        navigation={false}
-        onSwiperInit={onSwiperInit}
       />
     </Section>
   );

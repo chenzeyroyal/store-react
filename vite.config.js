@@ -7,7 +7,6 @@ import svgSprite from "vite-plugin-svg-sprite";
 export default defineConfig({
   plugins: [
     react(),
-    // Для более новых версий vite-plugin-svg-sprite
     svgSprite({
       symbolId: "icon-[name]",
       svgo: {
