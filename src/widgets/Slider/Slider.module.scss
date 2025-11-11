@@ -1,3 +1,5 @@
 .slider {
-  position: relative;
+  @include tablet {
+    padding-inline: 15px;
+  }
 }

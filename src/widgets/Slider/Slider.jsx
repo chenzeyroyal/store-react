@@ -1,37 +1,58 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import SliderCard from "@/shared/ui/SliderCard";
+import SliderNavigation from "./components/SliderNavigation";
 
 import "swiper/css";
 import styles from "./Slider.module.scss";
-import SliderNavigation from "./components/SliderNavigation";
 
 const defaultParams = {
   spaceBetween: 30,
   slidesPerView: 1,
   loop: false,
-  autoplay: false,
-  navigation: false,
-  pagination: false,
 };
 
 const Slider = (props) => {
   const {
-    sliderRef,
     params = defaultParams,
     slides = [],
-    navigation = false,
+    navigationPrevRef,
+    navigationNextRef,
+    paginationRef,
+    hasNavigationInner = false,
   } = props;
+
+  const onBeforeInit = (swiper) => {
+    swiper.params.navigation.prevEl = navigationPrevRef.current;
+    swiper.params.navigation.nextEl = navigationNextRef.current;
+    swiper.params.pagination.el = paginationRef.current;
+  };
 
   return (
     <div className={styles.slider}>
-      <Swiper modules={[Autoplay]} onSwiper={(swiper) => sliderRef.current = swiper} {...params}>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        pagination={{
+          el: paginationRef?.current,
+          clickable: true,
+        }}
+        onBeforeInit={onBeforeInit}
+        {...params}
+      >
         {slides.map((slide, index) => (
-          <SwiperSlide className={styles.slide} key={slide.id || index}>
+          <SwiperSlide className={styles.slide} key={index}>
             <SliderCard {...slide} />
           </SwiperSlide>
         ))}
-        {navigation && <SliderNavigation sliderRef={sliderRef}/>}
+        {hasNavigationInner && (
+          <SliderNavigation
+            placement="inside"
+            navigationPrevRef={navigationPrevRef}
+            navigationNextRef={navigationNextRef}
+            paginationRef={paginationRef}
+            hasButtons={false}
+          />
+        )}
       </Swiper>
     </div>
   );

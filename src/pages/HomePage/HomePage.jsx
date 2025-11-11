@@ -1,12 +1,14 @@
 import Layout from "@/app/Layout";
-import Features from "@/entities/ui/Features";
-import Hero from "@/entities/ui/Hero";
+import Hero from "@/entities/sections/Hero";
+import Popular from "@/entities/sections/Popular";
+import Stories from "@/entities/sections/Stories";
 
 const HomePage = () => {
   return (
     <Layout>
       <Hero />
-      <Features />
+      <Stories />
+      <Popular />
     </Layout>
   );
 };

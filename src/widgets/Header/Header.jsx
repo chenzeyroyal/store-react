@@ -5,14 +5,24 @@ import BurgerButton from "@/shared/ui/BurgerButton";
 import classNames from "classnames";
 import styles from "./Header.module.scss";
 import CategoryMenu from "../CategoryMenu";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MenuLink from "@/shared/ui/MenuLink";
+import { ProductsContext } from "@/entities/model/ProductsContext";
 
 const Header = () => {
+  const { favoritesCount } = useContext(ProductsContext);
+
   const menuItems = [
     {
+      title: "Магазин",
+      href: "/store",
+      icon: "store",
+    },
+    {
       title: "Избранное",
-      href: "/",
+      href: "/favorites",
       icon: "heart",
+      badge: favoritesCount > 0 && favoritesCount,
     },
     {
       title: "Корзина",
@@ -37,7 +47,6 @@ const Header = () => {
   return (
     <header className={classNames(styles.header, "container")}>
       <Logo />
-
       <div className={styles.searchBar}>
         <BurgerButton
           label="Каталог"
@@ -54,12 +63,9 @@ const Header = () => {
 
       <nav className={styles.menu}>
         <ul className={styles.menuList}>
-          {menuItems.map(({ title, href, icon }, index) => (
+          {menuItems.map((item, index) => (
             <li key={index}>
-              <a className={styles.menuLink} href={href}>
-                <Icon name={icon} size={25} fill="currentColor" />
-                <span>{title}</span>
-              </a>
+              <MenuLink {...item} />
             </li>
           ))}
         </ul>

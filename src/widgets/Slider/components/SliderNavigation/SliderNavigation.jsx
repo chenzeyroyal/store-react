@@ -4,50 +4,45 @@ import classNames from "classnames";
 
 const SliderNavigation = (props) => {
   const {
-    sliderRef,
-    placement,
-    position,
-    showButtons = true,
+    navigationPrevRef,
+    navigationNextRef,
+    paginationRef,
+    /*
+    'outside' (default) || 'inside'
+    */
+    placement = "outside",
+    hasPagination = true,
+    hasButtons = true,
   } = props;
 
-  const onButtonPrev = () => {
-      sliderRef.current && sliderRef.current.slidePrev();
-  };
-
-  const onButtonNext = () => {
-     sliderRef.current && sliderRef.current.slideNext();
-  };
-
   return (
-    <div
-      className={classNames(
-        styles.navigation,
-        styles[placement],
-        styles[position]
+    <div className={classNames(styles.navigation, styles[placement])}>
+      {hasButtons && (
+        <Button
+          className={styles.button}
+          icon="chevron-left"
+          label="Предыдущий слайд"
+          mode="circle"
+          isAccent
+          isLabelHidden
+          ref={navigationPrevRef}
+        />
       )}
-    >
-      {showButtons && (
-        <div className={styles.buttons}>
-          <Button
-            className={styles.button}
-            icon="chevron-left"
-            label="Предыдущий слайд"
-            mode="circle"
-            onClick={onButtonPrev}
-            isAccent
-            isLabelHidden
-          />
 
-          <Button
-            className={styles.button}
-            icon="chevron-right"
-            label="Следующий слайд"
-            mode="circle"
-            onClick={onButtonNext}
-            isAccent
-            isLabelHidden
-          />
-        </div>
+      {hasPagination && (
+        <div className={styles.pagination} ref={paginationRef} />
+      )}
+
+      {hasButtons && (
+        <Button
+          className={styles.button}
+          icon="chevron-right"
+          label="Следующий слайд"
+          mode="circle"
+          isAccent
+          isLabelHidden
+          ref={navigationNextRef}
+        />
       )}
     </div>
   );

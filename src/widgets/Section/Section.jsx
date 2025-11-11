@@ -1,25 +1,21 @@
-import "./Section.module.scss";
+import styles from "./Section.module.scss";
 import classNames from "classnames";
 
 const Section = (props) => {
-  const { className, title, subtitle, actions, children, isHeaderHidden } =
-    props;
+  const { className, title, actions, children, isHeaderHidden } = props;
 
   return (
-    <section className={classNames(className, "section")}>
+    <section className={classNames(className, styles.section)}>
       {title && (
         <header
-          className={classNames("section__header", {
+          className={classNames(styles.header, {
             ["visually-hidden"]: isHeaderHidden,
           })}
         >
-          <div className="section__description">
-            <h2 className="section__title">{title}</h2>
-            <p className="section__subtitle">{subtitle}</p>
+          <div className={styles.description}>
+            <h2 className={styles.title}>{title}</h2>
           </div>
-          {actions && (
-            <div className={classNames("section__actions")}>{actions}</div>
-          )}
+          {actions && <div className={styles.actions}>{actions}</div>}
         </header>
       )}
 

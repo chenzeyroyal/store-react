@@ -1,46 +1,12 @@
+import classNames from "classnames";
 import Icon from "@/shared/ui/Icon";
 import styles from "./CategoryMenu.module.scss";
-import classNames from "classnames";
+import useCategories from "@/shared/hooks/useCategories";
 
 const CategoryMenu = (props) => {
   const { id, isExpanded } = props;
-  const categories = [
-    {
-      title: "Смартфоны и гаджеты",
-      href: "/",
-      icon: "phone",
-      image: "",
-      isPopular: true,
-    },
-    {
-      title: "Телевизоры",
-      href: "/",
-      icon: "tv",
-      image: "",
-      isPopular: true,
-    },
-    {
-      title: "Компьютеры и ноутбуки",
-      href: "/",
-      icon: "laptop",
-      image: "",
-      isPopular: true,
-    },
-    {
-      title: "Крупная бытовая",
-      href: "/",
-      icon: "wash",
-      image: "",
-      isPopular: false,
-    },
-    {
-      title: "Красота и здоровье",
-      href: "/",
-      icon: "health",
-      image: "",
-      isPopular: false,
-    },
-  ];
+
+  const { categories } = useCategories();
 
   return (
     <nav

@@ -1,53 +1,57 @@
 .navigation {
-  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .pagination {
+    display: flex;
+    border-radius: var(--border-radius-xl);
+    padding: 20px;
+    column-gap: 8px;
+
+    :global(.swiper-pagination-bullet) {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-grey-03);
+      transition: all var(--transition-duration-m) ease;
+      cursor: pointer;
+
+      @include hover {
+        filter: brightness(0.7);
+        transform: scale(1.1);
+      }
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      transform: scale(1.5);
+      background-color: var(--color-accent);
+    }
+  }
 }
 
 .inside {
-  position: absolute;
-  justify-content: center;
-  padding: 20px;
   width: 100%;
-  padding-bottom: 20px;
-  z-index: var(--z-index-under);
-
-  .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-.bottom {
-  bottom: 0;
-}
-
-.pagination {
-  background-color: var(--color-grey-02);
-  padding: 20px;
-  display: flex;
-  border-radius: var(--border-radius-xl);
   justify-content: center;
-  align-items: center;
-  box-shadow: var(--shadow);
-  column-gap: 8px;
-}
 
-:global(.swiper-pagination-bullet) {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-grey-03);
-  cursor: pointer;
-  transition: all var(--transition-duration-m) ease;
-  border: 2px solid transparent;
+  @include tablet-above {
+    position: absolute;
+    display: flex;
+    z-index: var(--z-index-under);
+    bottom: 10px;
 
-  &:hover {
-    filter: brightness(0.7);
-    transform: scale(1.1);
+    .pagination {
+      background-color: var(--color-grey-02);
+      box-shadow: var(--shadow);
+    }
+  }
+
+  @include tablet {
+    display: inline-flex;
+    padding-top: 5px;
   }
 }
 
-:global(.swiper-pagination-bullet-active) {
-  transform: scale(1.5);
-  background-color: var(--color-accent);
+.outside {
+  display: inline-flex;
+  column-gap: 5px;
 }

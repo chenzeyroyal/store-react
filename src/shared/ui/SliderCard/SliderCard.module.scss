@@ -1,5 +1,14 @@
 .card {
   position: relative;
+
+  @include tablet {
+    border-radius: var(--border-radius-m);
+    overflow: hidden;
+  }
+
+  @include mobile {
+    height: 200px;
+  }
 }
 
 .text {
@@ -22,4 +31,10 @@
 
 .button {
   margin-top: 20px;
+}
+.image {
+  @include mobile {
+    object-fit: cover;
+    height: 100%;
+  }
 }

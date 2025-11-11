@@ -12,9 +12,10 @@ const Button = (props) => {
     type = "button",
     mode = "plate",
     icon,
-    onClick,
     isLabelHidden,
     isAccent,
+    hasFillIcon = false,
+    onClick,
   } = props;
 
   const isLink = href !== undefined;
@@ -30,7 +31,7 @@ const Button = (props) => {
         className,
         styles.button,
         styles[mode],
-        isAccent && styles.accent
+        isAccent && styles.isAccent
       )}
       href={href}
       ref={ref}
@@ -39,7 +40,9 @@ const Button = (props) => {
       onClick={onClick}
       {...specificProps}
     >
-      {icon && <Icon name={icon} />}
+      {icon && (
+        <Icon name={icon} fill={hasFillIcon ? "currentColor" : "none"} />
+      )}
 
       {!isLabelHidden && <span>{label}</span>}
     </Component>

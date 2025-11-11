@@ -8,6 +8,7 @@
   --color-grey-03: #dbdbdb;
 
   --color-accent: #16bdaf;
+  --color-accent-02: #262e37;
 
   --border-width-l: 4px;
   --border-width-m: 3px;
@@ -31,12 +32,7 @@
     )};
 
   --container-padding-x: 16px;
-
-  --section-padding-y: #{fluid(75, 40)};
-
-  --header-height: 100px;
-  --section-padding-y: #{fluid-to-laptop(35, 15)};
-
+  --menu-mobile-height: 80px;
   --transition-duration: 0.2s;
   --transition-duration-m: 0.4s;
   --transition-duration-l: 1s;

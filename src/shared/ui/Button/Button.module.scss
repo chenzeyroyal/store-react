@@ -1,17 +1,18 @@
 .button {
   @include flex-center;
-  column-gap: 5px;
+  column-gap: 10px;
   background: none;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 12px;
   color: inherit;
-
-  @include hover {
-    filter: brightness(0.9);
-  }
+  user-select: none;
 }
 
-.accent {
+.isAccent {
+  @include hover {
+    filter: brightness(0.8);
+  }
+
   background-color: var(--color-accent);
   color: var(--color-white);
 }
